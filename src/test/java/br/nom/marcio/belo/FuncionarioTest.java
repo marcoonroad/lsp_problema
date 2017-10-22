@@ -55,7 +55,7 @@ public class FuncionarioTest {
         bonificado.reajustar (new BigDecimal ("9.00"));
         BigDecimal salarioAposReajuste = bonificado.getSalarioAnual ( );
 
-        assertEquals (new BigDecimal ("80800.00"), salarioAposReajuste);    
+        assertEquals (new BigDecimal ("87200.00"), salarioAposReajuste);
     }
 
     // ===========================================================================================

@@ -26,6 +26,13 @@ public abstract class Funcionario {
      * @param taxa valor maior que 0 e menor ou igual a 10.
      */
     public abstract void reajustar (BigDecimal taxa);
+
+    // respeita devidamente a invariant da classe base Funcionario
+    protected final boolean isTaxaForaIntervalo (BigDecimal taxa) {
+        return
+            taxa.compareTo (BigDecimal.ZERO) <= 0 ||
+            taxa.compareTo (BigDecimal.TEN) > 0;
+    }
 }
 
 // END

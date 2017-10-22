@@ -3,8 +3,9 @@ package br.nom.marcio.belo;
 import java.math.BigDecimal;
 
 public class Bonificado extends Funcionario {
-    public static final BigDecimal CINCO = new BigDecimal ("5.00");
-    private BigDecimal bonus             = BigDecimal.ZERO;
+    // public static final BigDecimal CINCO = new BigDecimal ("5.00");
+
+    private BigDecimal bonus = BigDecimal.ZERO;
 
     protected Bonificado (String nome, BigDecimal salarioAnual) {
         super (nome, salarioAnual);
@@ -25,6 +26,7 @@ public class Bonificado extends Funcionario {
         }
     }
 
+    /*
     // essa restrição quebra a invariant assumida na superclasse do intervalo
     // de reajuste ser entre 0 e 10...
     private boolean isTaxaForaIntervalo (BigDecimal taxa) {
@@ -32,6 +34,7 @@ public class Bonificado extends Funcionario {
             taxa.compareTo (BigDecimal.ZERO) <= 0 ||
             taxa.compareTo (CINCO) > 0;
     }
+    */
 
     public void acumularBonus (BigDecimal acrescimoBonus) {
         bonus = bonus.add (acrescimoBonus);
