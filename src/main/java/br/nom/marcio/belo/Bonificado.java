@@ -13,6 +13,7 @@ public class Bonificado extends Funcionario {
     @Override
     public void reajustar (BigDecimal taxa) {
         validarTaxa (taxa);
+
         this.salarioAnual = this.salarioAnual.multiply (
             taxa.divide (new BigDecimal ("100"), 2, BigDecimal.ROUND_HALF_UP).add (BigDecimal.ONE)
         );
@@ -20,10 +21,12 @@ public class Bonificado extends Funcionario {
 
     private void validarTaxa (BigDecimal taxa) {
         if (isTaxaForaIntervalo (taxa)) {
-            throw new IllegalArgumentException ("Taxa deve estar no limite entre 0 e 5");
+            throw new IllegalArgumentException ("Taxa deve estar no limite entre 0 e 5!");
         }
     }
 
+    // essa restrição quebra a invariant assumida na superclasse do intervalo
+    // de reajuste ser entre 0 e 10...
     private boolean isTaxaForaIntervalo (BigDecimal taxa) {
         return
             taxa.compareTo (BigDecimal.ZERO) <= 0 ||

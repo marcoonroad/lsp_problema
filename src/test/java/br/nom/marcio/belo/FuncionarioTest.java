@@ -10,7 +10,7 @@ public class FuncionarioTest {
     public void reajustarMensalistaTest ( ) {
         Funcionario mensalista = new Mensalista ("Marcio", new BigDecimal ("120000"));
 
-        mensalista.reajustar (new BigDecimal("5"));
+        mensalista.reajustar (new BigDecimal ("5"));
 
         BigDecimal salarioAposReajuste = mensalista.getSalarioAnual ( );
 
@@ -48,6 +48,16 @@ public class FuncionarioTest {
         assertEquals (new BigDecimal ("84000.00"), salarioAposReajuste);
     }
 
+    @Test
+    public void bonificadoQuebrouInvariant ( ) {
+        Funcionario bonificado = new Bonificado ("Ana", new BigDecimal ("80000.00"));
+
+        bonificado.reajustar (new BigDecimal ("9.00"));
+        BigDecimal salarioAposReajuste = bonificado.getSalarioAnual ( );
+
+        assertEquals (new BigDecimal ("80800.00"), salarioAposReajuste);    
+    }
+
     // ===========================================================================================
 
     @Test
@@ -61,6 +71,8 @@ public class FuncionarioTest {
     public void reajustarVoluntario ( ) {
         Funcionario funcionario = new Voluntario ("Jimmy Doidão", new BigDecimal ("200.00"));
 
+        // Fonte de erro:
+        // voluntário não tem reajuste pois não tem salário
         funcionario.reajustar (BigDecimal.ONE);
     }
 }

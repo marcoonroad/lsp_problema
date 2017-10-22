@@ -9,7 +9,7 @@ public class Voluntario extends Funcionario {
 
     @Override
     public void reajustar (BigDecimal taxa) {
-        throw new IllegalStateException ("nao implementado");
+        throw new IllegalStateException ("Não implementado!");
     }
 }
 

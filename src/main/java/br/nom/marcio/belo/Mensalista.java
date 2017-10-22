@@ -12,22 +12,22 @@ public class Mensalista extends Funcionario {
         validarTaxa (taxa);
 
         this.salarioAnual = this.salarioAnual.multiply (
-            taxa.divide (new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP).add (BigDecimal.ONE)
+            taxa.divide (new BigDecimal ("100"), 2, BigDecimal.ROUND_HALF_UP).add (BigDecimal.ONE)
         );
     }
 
     private void validarTaxa (BigDecimal taxa) {
         if (isTaxaForaIntervalo (taxa)) {
-            throw new IllegalArgumentException ("Taxa deve estar no limite entre 0 e 10");
+            throw new IllegalArgumentException ("Taxa deve estar no limite entre 0 e 10!");
         }
     }
 
+    // respeita devidamente a invariant da superclasse
     private boolean isTaxaForaIntervalo (BigDecimal taxa) {
         return
             taxa.compareTo (BigDecimal.ZERO) <= 0 ||
             taxa.compareTo (BigDecimal.TEN) > 0;
     }
-
 }
 
 // END
