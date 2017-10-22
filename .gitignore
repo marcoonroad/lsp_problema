@@ -1,2 +1,7 @@
 .idea/
 lsp_problema.iml
+*.swp
+*.swo
+.*.un~
+*~
+target/
